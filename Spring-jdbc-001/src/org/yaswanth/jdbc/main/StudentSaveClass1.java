@@ -13,20 +13,20 @@ import org.yaswanth.jdbc.DAO.StudentDAOImpl;
  *
  * 
  */
-public class StudentSaveClass {
+public class StudentSaveClass1 {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 
-		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans1.xml");
 		StudentDAOImpl bean = context.getBean("studentDAOImpl", StudentDAOImpl.class);
 
 		Student student = new Student();
-		student.setRollNo(3);
-		student.setName("VANI");
-		student.setAddress("KADIRI");
+		student.setRollNo(6);
+		student.setName("Chinna");
+		student.setAddress("Vijayawada");
 
 //		StudentDAO studentDAO = new StudentDAOImpl();
 //		studentDAO.insert(student);

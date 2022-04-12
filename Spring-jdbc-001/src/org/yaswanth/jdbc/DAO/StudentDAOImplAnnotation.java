@@ -3,7 +3,9 @@
  */
 package org.yaswanth.jdbc.DAO;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 import org.yaswanth.jdbc.Student;
 
 /**
@@ -11,12 +13,12 @@ import org.yaswanth.jdbc.Student;
  *
  * 
  */
-public class StudentDAOImpl implements StudentDAO {
+@Repository("studentDAOAnnotation")
+public class StudentDAOImplAnnotation implements StudentDAO {
 
-	// private JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
-
+	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
@@ -35,17 +37,5 @@ public class StudentDAOImpl implements StudentDAO {
 
 		System.out.println(update + " rows Updated");
 	}
-
-	// Creating Data Source through Java
-//	public DataSource getDataSource() {
-//
-//		String url = "jdbc:mysql://localhost:3306/school?useSSL=false";
-//		String userName = "root";
-//		String password = "Chinna@0248";
-//		DataSource dataSource = new DriverManagerDataSource(url, userName, password);
-//
-//		return dataSource;
-//
-//	}
 
 }

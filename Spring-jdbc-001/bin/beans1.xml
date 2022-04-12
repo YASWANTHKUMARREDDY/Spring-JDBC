@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="dataSourceForConnection"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/school?useSSL=false"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="Chinna@0248"></property>
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+	</bean>
+
+	<bean id="jdbcTemplateObject"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg name="dataSource"
+			ref="dataSourceForConnection" />
+	</bean>
+
+	<bean id="studentDAOImpl"
+		class="org.yaswanth.jdbc.DAO.StudentDAOImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplateObject"></property>
+	</bean>
+</beans>
