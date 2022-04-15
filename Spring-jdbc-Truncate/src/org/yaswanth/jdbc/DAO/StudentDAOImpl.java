@@ -55,4 +55,13 @@ public class StudentDAOImpl implements StudentDAO {
 
 	}
 
+	@Override
+	public void deleteAll() {
+
+		String sql = "TRUNCATE TABLE STUDENT";
+		jdbcTemplate.update(sql);
+		System.out.println("Table is Empty Now...");
+
+	}
+
 }

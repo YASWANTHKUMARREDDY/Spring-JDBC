@@ -9,6 +9,8 @@
 
 	<context:component-scan
 		base-package="org.yaswanth.jdbc.DAO"></context:component-scan>
+	<context:component-scan
+		base-package="org.yaswanth.jdbc.service"></context:component-scan>
 	<bean id="dataSourceForConnection"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="url"

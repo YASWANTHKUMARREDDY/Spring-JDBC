@@ -17,4 +17,6 @@ public interface StudentDAO {
 	void insert(Student student);
 
 	void insert(List<Student> student);
+	
+	public void deleteAll();
 }

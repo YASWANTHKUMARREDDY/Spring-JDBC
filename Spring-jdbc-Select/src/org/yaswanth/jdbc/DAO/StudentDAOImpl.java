@@ -3,6 +3,7 @@
  */
 package org.yaswanth.jdbc.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +43,16 @@ public class StudentDAOImpl implements StudentDAO {
 
 	@Override
 	public void insert(List<Student> student) {
-		// TODO Auto-generated method stub
-		
-	}
 
+		String sql = "Insert into student(ROLL_NO,STUDENT_NAME,STUDENT_ADDRESS) values (?,?,?)";
+		ArrayList<Object[]> sqlArgs = new ArrayList<>();
+
+		for (Student temp : student) {
+			Object[] args = { temp.getRollNo(), temp.getName(), temp.getAddress() };
+			sqlArgs.add(args);
+		}
+		jdbcTemplate.batchUpdate(sql, sqlArgs);
+
+	}
+	
 }

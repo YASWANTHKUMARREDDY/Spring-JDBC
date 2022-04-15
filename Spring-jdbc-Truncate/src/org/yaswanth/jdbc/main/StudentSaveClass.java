@@ -22,6 +22,7 @@ public class StudentSaveClass {
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		StudentDAOImpl bean = context.getBean("studentDAO", StudentDAOImpl.class);
 
+		bean.deleteAll();
 	}
 
 }

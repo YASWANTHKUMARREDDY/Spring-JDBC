@@ -27,15 +27,16 @@ public class StudentDAOHelper {
 		student2.setAddress("MCU");
 		
 		Student student3 = new Student();
-		student1.setRollNo(3);
-		student1.setName("Vani");
-		student1.setAddress("Kadiri");
+		student3.setRollNo(3);
+		student3.setName("Vani");
+		student3.setAddress("Kadiri");
 		
 		ArrayList<Student> studentList = new ArrayList<Student>();
 		studentList.add(student1);
 		studentList.add(student2);
 		studentList.add(student3);
 		
+		System.out.println("Inserting Batch of Objects..");
 		studentDAO.insert(studentList);
 		
 	}
