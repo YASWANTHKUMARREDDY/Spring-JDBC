@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.yaswanth.jdbc.Student;
+import org.yaswanth.jdbc.service.StudentRowMapper;
 
 /**
  * @author POOLA YASWANTH KUMAR REDDY
@@ -54,5 +55,55 @@ public class StudentDAOImpl implements StudentDAO {
 		jdbcTemplate.batchUpdate(sql, sqlArgs);
 
 	}
-	
+
+	@Override
+	public boolean deleteRecordByRollNo(int rollNo) {
+
+		String sql = "Delete From STUDENT Where ROLL_NO =?";
+		int recordsDeleted = jdbcTemplate.update(sql, rollNo);
+		System.out.println("No of Rows Deleted : " + recordsDeleted);
+		return recordsDeleted == 1;
+	}
+
+	@Override
+	public int deleteRecordByStudentNameOrStudentAddress(String name, String address) {
+
+		String sql = "DELETE FROM STUDENT WHERE STUDENT_NAME = ? OR STUDENT_ADDRESS = ?";
+
+		// Object [] arguments = {name, address};
+		// jdbcTemplate.update(sql, arguments);
+		int deletedRows = jdbcTemplate.update(sql, name, address);
+		System.out.println("No of Rows Deleted : " + deletedRows);
+		return deletedRows;
+	}
+
+	@Override
+	public void deleteAll() {
+
+		String sql = "TRUNCATE TABLE STUDENT";
+		jdbcTemplate.update(sql);
+		System.out.println("Table is Empty Now...");
+
+	}
+
+	@Override
+	public List<Student> findAllStudents() {
+
+		String sql = "SELECT * FROM STUDENT";
+
+		List<Student> students = jdbcTemplate.query(sql, new StudentRowMapper());
+
+		return students;
+	}
+
+	@Override
+	public Student findStudentByRollNo(int rollNo) {
+
+		String sqlStatement = "SELECT * FROM STUDENT WHERE ROLL_NO = ?";
+
+		Student sutdent = jdbcTemplate.queryForObject(sqlStatement, new StudentRowMapper(), rollNo);
+
+		return sutdent;
+	}
+
 }

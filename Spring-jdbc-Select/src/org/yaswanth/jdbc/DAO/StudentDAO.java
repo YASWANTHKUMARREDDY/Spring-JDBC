@@ -18,4 +18,13 @@ public interface StudentDAO {
 
 	void insert(List<Student> student);
 
+	boolean deleteRecordByRollNo(int rollNo);
+
+	int deleteRecordByStudentNameOrStudentAddress(String name, String address);
+	
+	public void deleteAll();
+	
+	List<Student> findAllStudents();
+	
+	Student findStudentByRollNo(int rollNo);
 }
