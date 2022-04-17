@@ -22,7 +22,7 @@
 		<property name="dataSource" ref="dataSourceForConnection"></property>
 	</bean>
 
-	<!-- Transaction Management Configuration Starts -->
+	<!-- Transaction Management Configuration Ends -->
 	
 	<bean id="dataSourceForConnection"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
