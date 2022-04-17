@@ -1,2 +1,2 @@
 # Spring-JDBC
-This Repository Contains Projects on Spring JDBC using JDBCTemplate.
+This Repository Contains Java Projects on Spring JDBC using JDBCTemplate.
